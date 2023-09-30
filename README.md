@@ -1,4 +1,4 @@
-# practicaN-js
+
 //Ejercicio 2:
 //Generar un número aleatorio que represente la posición inicial de 
 //un ángulo entre 0 y 359 grados. Generar un segundo número aleatorio cuyo valor 
