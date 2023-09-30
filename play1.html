@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joystick</title>
+</head>
+<body>
+    <img id="joystick" src="joystick.png" alt="Joystick" onclick="determinarBoton(event)">
+    <script>
+        function determinarBoton(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            
+            // Coordenadas de los centros de los botones
+            const botones = {
+                izquierdo: { x: 220, y: 240, radio: 50 },
+                derecho: { x: 650, y: 240, radio: 50 },
+                arriba: { x: 435, y: 120, radio: 50 },
+                abajo: { x: 435, y: 360, radio: 50 },
+                select: { x: 310, y: 160, radio: 30 },
+                start: { x: 560, y: 160, radio: 30 },
+                palancaIzquierda: { x: 170, y: 500, radio: 70 },
+                palancaDerecha: { x: 700, y: 500, radio: 70 },
+                amarillo: { x: 270, y: 460, radio: 20 },
+                azul: { x: 360, y: 400, radio: 20 },
+                verde: { x: 500, y: 400, radio: 20 },
+                rojo: { x: 590, y: 460, radio: 20 }
+            };
+
+            // Función para determinar si se hizo clic en un botón
+            function verificarClicEnBoton(x, y, boton) {
+                const distancia = Math.sqrt((x - boton.x) ** 2 + (y - boton.y) ** 2);
+                return distancia <= boton.radio;
+            }
+
+            // Determinar qué botón se ha presionado
+            for (const nombreBoton in botones) {
+                if (verificarClicEnBoton(x, y, botones[nombreBoton])) {
+                    alert("Botón " + nombreBoton.charAt(0).toUpperCase() + nombreBoton.slice(1));
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
